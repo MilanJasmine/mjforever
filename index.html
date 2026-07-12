@@ -170,9 +170,8 @@ text-shadow:0 0 8px rgba(255,255,255,.7);
   <form
     action="https://script.google.com/macros/s/AKfycbxkVVbsg6IteWrX3iLdiSOQR18tT9b_LkPx1afI1DV74sp4_4Jq6f43xOHmYaGepPUS/exec"
     method="POST"
-    enctype="application/x-www-form-urlencoded"
     target="hidden_iframe"
-    onsubmit="document.getElementById('status').innerHTML='❤️ Thank you for your RSVP!'; this.reset();">
+    id="rsvpForm">
 
     <input
       type="text"
@@ -192,7 +191,6 @@ text-shadow:0 0 8px rgba(255,255,255,.7);
     </button>
   </form>
 
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
 
   <p id="status" style="margin-top:15px;color:#556b2f;"></p>
 </div>
@@ -232,6 +230,11 @@ setTimeout(()=>{
 
 
 </script>
+  <iframe
+name="hidden_iframe"
+style="display:none"
+onload="submitted()">
+</iframe>
 
 </body>
 </html>
