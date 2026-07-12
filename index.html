@@ -94,6 +94,28 @@ font-size:34px;
 
 }
 @media(min-width:700px){.card{max-width:520px}.names{font-size:64px}}
+ .petal{
+position:fixed;
+top:-50px;
+font-size:24px;
+pointer-events:none;
+animation:fall linear forwards;
+z-index:9999;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-50px) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+
+}
 </style>
 </head>
 <body>
@@ -147,6 +169,39 @@ setInterval(()=>{
  const secs=Math.floor(d%60000/1000);
  document.getElementById("timer").innerHTML=`${days} Days ${hrs} Hrs ${mins} Min ${secs} Sec`;
 },1000);
+ <script>
+
+function createFlower(){
+
+const flower=document.createElement("div");
+
+flower.className="petal";
+
+flower.innerHTML="🌸";
+
+flower.style.left=Math.random()*100+"vw";
+
+flower.style.animationDuration=(Math.random()*4+6)+"s";
+
+flower.style.fontSize=(Math.random()*15+15)+"px";
+
+document.body.appendChild(flower);
+
+setTimeout(()=>{
+flower.remove();
+},10000);
+
+}
+
+for(let i=0;i<20;i++){
+
+setTimeout(createFlower,i*300);
+
+}
+
+setInterval(createFlower,800);
+
+</script>
 </script>
 </body>
 </html>
