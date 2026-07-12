@@ -169,7 +169,32 @@ text-shadow:0 0 8px rgba(255,255,255,.7);
 <p>We look forward to celebrating with you ❤</p>
 <h2>Milan & Jasmine</h2>
 </div>
+<div class="box">
 
+<h3>RSVP</h3>
+
+<input
+id="guestName"
+type="text"
+placeholder="Enter your name"
+style="
+width:100%;
+padding:12px;
+margin:15px 0;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+">
+
+<button
+class="btn"
+onclick="submitRSVP()">
+I'm Attending
+</button>
+
+<p id="status" style="margin-top:15px;color:#556b2f;"></p>
+
+</div>
 </div>
 </section>
 
@@ -198,6 +223,40 @@ setTimeout(()=>{
  for(let i=0;i<20;i++)setTimeout(heart,i*200);
  setInterval(heart,700);
 },1200);
+
+ const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbxMkMkg_8LF26t-dupmx_VeGLc2ibX_t0cQpgMjIvQ95Uc9SVJzifiEW8ol6V4W-7ZN/exec";
+
+function submitRSVP(){
+
+const name=document.getElementById("guestName").value.trim();
+
+if(name===""){
+alert("Please enter your name.");
+return;
+}
+
+fetch(SCRIPT_URL,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+name:name,
+guests:"",
+response:"Yes"
+})
+})
+.then(()=>{
+document.getElementById("status").innerHTML=
+"❤️ Thank you for your RSVP!";
+document.getElementById("guestName").value="";
+})
+.catch(()=>{
+alert("Something went wrong.");
+});
+
+}
 </script>
 
 </body>
