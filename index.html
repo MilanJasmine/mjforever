@@ -224,8 +224,8 @@ setTimeout(()=>{
  setInterval(heart,700);
 },1200);
 
- const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxMkMkg_8LF26t-dupmx_VeGLc2ibX_t0cQpgMjIvQ95Uc9SVJzifiEW8ol6V4W-7ZN/exec";
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbxG-GilK28iPwf-wgBAE8sAnWO_Ovk26XHJoaHvdPUFowPiz2IlTKqZfAf5d8RG86BY/exec";
 
 function submitRSVP(){
 
@@ -236,25 +236,24 @@ alert("Please enter your name.");
 return;
 }
 
+const formData=new FormData();
+formData.append("name",name);
+
 fetch(SCRIPT_URL,{
 method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-name:name,
-guests:"",
-response:"Yes"
+body:formData
 })
-})
+.then(response=>response.text())
 .then(()=>{
-document.getElementById("status").innerHTML=
-"❤️ Thank you for your RSVP!";
+document.getElementById("status").innerHTML="❤️ Thank you for your RSVP!";
 document.getElementById("guestName").value="";
 })
-.catch(()=>{
-alert("Something went wrong.");
+.catch(error=>{
+console.error(error);
+alert("Unable to submit RSVP.");
 });
+
+
 
 }
 </script>
