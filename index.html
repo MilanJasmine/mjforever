@@ -229,17 +229,33 @@ setTimeout(()=>{
 },1200);
 
 
-function submitted() {
-    document.getElementById("status").innerHTML =
-        "❤️ Thank you for your RSVP!";
-    document.getElementById("rsvpForm").reset();
-}
+let submitted = false;
+
+window.onload = function () {
+
+    document.getElementById("rsvpForm").addEventListener("submit", function () {
+        submitted = true;
+    });
+
+    document.getElementById("hidden_iframe").onload = function () {
+
+        if (!submitted) return;
+
+        document.getElementById("status").innerHTML =
+            "❤️ Thank you for your RSVP!";
+
+        document.getElementById("rsvpForm").reset();
+
+        submitted = false;
+    };
+
+};
 
 </script>
   <iframe
 name="hidden_iframe"
 style="display:none"
-onload="submitted()">
+id="hidden_iframe">
 </iframe>
 
 </body>
