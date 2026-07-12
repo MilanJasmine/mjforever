@@ -164,38 +164,43 @@ text-shadow:0 0 8px rgba(255,255,255,.7);
 <p>St. Thomas Malankara Syriac Catholic Church Parish Hall<br>Vennikulam</p>
 <a class="btn" target="_blank" href="https://share.google/12JXYSIhS6beJ2d1A">Reception Location</a>
 </div>
+<div class="box">
+  <h3>RSVP</h3>
 
+  <form
+    action="https://script.google.com/macros/s/AKfycbzVLfjJd2KYD9UnlN6GUcSGqQ-w03nhCQmd64JD77OricDhiUac5LwM8cezd2wBtv2p/exec"
+    method="POST"
+    target="hidden_iframe"
+    onsubmit="document.getElementById('status').innerHTML='❤️ Thank you for your RSVP!'; this.reset();">
+
+    <input
+      type="text"
+      name="name"
+      placeholder="Enter your name"
+      required
+      style="
+      width:100%;
+      padding:12px;
+      margin:15px 0;
+      border:1px solid #ccc;
+      border-radius:10px;
+      font-size:16px;">
+
+    <button class="btn" type="submit">
+      I'm Attending
+    </button>
+  </form>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <p id="status" style="margin-top:15px;color:#556b2f;"></p>
+</div>
 <div class="footer">
 <p>We look forward to celebrating with you ❤</p>
 <h2>Milan & Jasmine</h2>
 </div>
-<div class="box">
 
-<h3>RSVP</h3>
 
-<input
-id="guestName"
-type="text"
-placeholder="Enter your name"
-style="
-width:100%;
-padding:12px;
-margin:15px 0;
-border:1px solid #ccc;
-border-radius:10px;
-font-size:16px;
-">
-
-<button
-class="btn"
-onclick="submitRSVP()">
-I'm Attending
-</button>
-
-<p id="status" style="margin-top:15px;color:#556b2f;"></p>
-
-</div>
-</div>
 </section>
 
 <script>
@@ -224,38 +229,7 @@ setTimeout(()=>{
  setInterval(heart,700);
 },1200);
 
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxG-GilK28iPwf-wgBAE8sAnWO_Ovk26XHJoaHvdPUFowPiz2IlTKqZfAf5d8RG86BY/exec";
 
-function submitRSVP(){
-
-const name=document.getElementById("guestName").value.trim();
-
-if(name===""){
-alert("Please enter your name.");
-return;
-}
-
-const formData=new FormData();
-formData.append("name",name);
-
-fetch(SCRIPT_URL,{
-method:"POST",
-body:formData
-})
-.then(response=>response.text())
-.then(()=>{
-document.getElementById("status").innerHTML="❤️ Thank you for your RSVP!";
-document.getElementById("guestName").value="";
-})
-.catch(error=>{
-console.error(error);
-alert("Unable to submit RSVP.");
-});
-
-
-
-}
 </script>
 
 </body>
