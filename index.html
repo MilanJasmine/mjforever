@@ -27,14 +27,18 @@ animation-delay:3s;
 }
 #intro h1{
 font-family:'Great Vibes',cursive;
-font-size:64px;
+font-size:52px;
 color:#556b2f;
 animation:zoom 2.5s ease;
+text-align:center;
+line-height:1.1;
+margin:0;
 }
-#intro p{
-margin-top:12px;
-letter-spacing:4px;
-color:#777;
+.heart{
+font-size:42px;
+color:#d96c7c;
+margin:10px 0;
+animation:zoom 2.5s ease;
 }
 @keyframes zoom{
 0%{opacity:0;transform:scale(.7)}
@@ -109,16 +113,45 @@ animation:fall linear forwards;
 100%{transform:translateY(110vh) rotate(360deg);opacity:0}
 }
 @media(max-width:600px){
-.names{font-size:40px}
-.day{font-size:56px}
+
+.names{
+font-size:40px;
+}
+
+.day{
+font-size:56px;
+}
+
+#intro h1{
+font-size:44px;
+}
+
+.heart{
+font-size:36px;
+}
+
+#intro p{
+font-size:18px;
+letter-spacing:3px;
+}
+
 }
 </style>
 </head>
 <body>
 
 <div id="intro">
-<h1>Milan ❤️ Jasmine</h1>
+
+<h1>Milan</h1>
+
+<div class="heart">
+❤️
+</div>
+
+<h1>Jasmine</h1>
+
 <p>12 September 2026</p>
+
 </div>
 
 <section class="hero">
