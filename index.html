@@ -259,28 +259,29 @@ document.getElementById("rsvpForm").addEventListener("submit", async function(e)
 
     e.preventDefault();
 
+    document.getElementById("loading").style.visibility="visible";
+    document.getElementById("loading").style.opacity="1";
+
     const formData = new URLSearchParams(new FormData(this));
 
     try{
 
-       await fetch(SCRIPT_URL,{
-    method:"POST",
-    headers:{
-        "Content-Type":"application/x-www-form-urlencoded"
-    },
-    body:formData.toString()
-});
+        await fetch(SCRIPT_URL,{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/x-www-form-urlencoded"
+            },
+            body:formData.toString()
+        });
 
-this.reset();
-
-// Give Google Apps Script a moment to finish
-setTimeout(() => {
-    window.location.href = "success.html";
-}, 300);
+        window.location.replace("success.html");
 
     }catch(err){
 
-        alert("Unable to submit RSVP. Please try again.");
+        document.getElementById("loading").style.visibility="hidden";
+        document.getElementById("loading").style.opacity="0";
+
+        alert("Unable to submit RSVP.");
 
     }
 
@@ -312,7 +313,43 @@ setTimeout(()=>{
 
 
 </script>
- 
+ <div id="loading" style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(255,255,255,.95);
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:Poppins,sans-serif;
+visibility:hidden;
+opacity:0;
+transition:.3s;
+">
+
+<div style="
+width:55px;
+height:55px;
+border:5px solid #ddd;
+border-top:5px solid #556b2f;
+border-radius:50%;
+animation:spin .8s linear infinite;">
+</div>
+
+<p style="margin-top:20px;font-size:18px;color:#556b2f;">
+Submitting RSVP...
+</p>
+
+</div>
+
+<style>
+@keyframes spin{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+</style>
 
 </body>
 </html>
