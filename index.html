@@ -195,10 +195,7 @@ text-shadow:0 0 8px rgba(255,255,255,.7);
 <div class="box">
 <h3>RSVP</h3>
 
-<form
-action="https://script.google.com/macros/s/AKfycbxc8epS9KzoVqXDQYmMpXZJU0tYDf_FXH-X1RTTZknaiA7iy1cy2Cty5igQh0rwfAPw/exec"
-method="POST"
-id="rsvpForm">
+<form id="rsvpForm">
 
 <input
 type="text"
@@ -256,16 +253,41 @@ Submit RSVP
 </section>
 
 <script>
-  document.getElementById("rsvpForm").addEventListener("submit", function () {
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhzWt3Nz9ag48YmBDhZhuq2L51O9nDYHzW8cz2dGnakB9etWH3oYmWIhO4oPd93IJx/exec";
 
-    Swal.fire({
-        icon: 'success',
-        title: 'Thank You!',
-        text: 'Your RSVP has been received.',
-        confirmButtonColor: '#556b2f'
-    });
+document.getElementById("rsvpForm").addEventListener("submit", async function(e){
 
-    this.reset();
+    e.preventDefault();
+
+    const form = this;
+    const data = new FormData(form);
+
+    try{
+
+        await fetch(SCRIPT_URL,{
+            method:"POST",
+            body:data,
+            mode:"no-cors"
+        });
+
+        form.reset();
+
+        Swal.fire({
+            icon:"success",
+            title:"Thank You!",
+            text:"Your RSVP has been received.",
+            confirmButtonColor:"#556b2f"
+        });
+
+    }catch(err){
+
+        Swal.fire({
+            icon:"error",
+            title:"Oops!",
+            text:"Unable to submit RSVP."
+        });
+
+    }
 
 });
 const target=new Date("2026-09-12T11:30:00");
