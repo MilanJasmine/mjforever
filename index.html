@@ -131,18 +131,25 @@ color:#888;
 margin-top:8px;
 }
 
-  .radio-option{
+.radio-option{
     display:flex;
     align-items:center;
     gap:10px;
-    margin:12px 0;
     cursor:pointer;
-    font-size:16px;
+    font-size:18px;
+    font-family:'Poppins',sans-serif;
+    color:#444;
 }
 
 .radio-option input{
-    margin:0;
     accent-color:#556b2f;
+    width:18px;
+    height:18px;
+    margin:0;
+}
+
+.radio-option span{
+    line-height:1.4;
 }
 
 .subtitle{
@@ -223,8 +230,10 @@ box-shadow:0 0 0 3px rgba(85,107,47,.15);
 }
 
 .radio-group{
-text-align:left;
-margin:20px 0;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin:18px 0 20px;
 }
 
 .question{
@@ -365,15 +374,15 @@ width:100%;
 
 <div class="radio-group">
 
-<label>
-<input type="radio" name="response" value="Yes" checked>
-Yes, I'll be there
-</label>
+    <label class="radio-option">
+        <input type="radio" name="response" value="Yes" checked>
+        <span>Yes, I'll be there</span>
+    </label>
 
-<label>
-<input type="radio" name="response" value="No">
-Sorry, can't make it
-</label>
+    <label class="radio-option">
+        <input type="radio" name="response" value="No">
+        <span>Sorry, can't make it</span>
+    </label>
 
 </div>
 
@@ -383,7 +392,7 @@ Sorry, can't make it
 type="text"
 id="name"
 name="name"
-placeholder="Kindly enter your full name"
+placeholder="Kindly enter your name"
 class="field"
 required>
 
