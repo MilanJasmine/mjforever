@@ -204,14 +204,22 @@ margin-bottom:12px;
 }
 
 .field{
-width:100%;
-padding:12px;
-margin:12px 0;
-border:1px solid #ccc;
-border-radius:10px;
-font-size:16px;
+width:90%;
+padding:10px 14px;
+margin:10px auto;
+display:block;
+border:1px solid #d8d8d8;
+border-radius:12px;
+font-size:15px;
 font-family:'Poppins',sans-serif;
 background:#fff;
+transition:.3s;
+}
+
+.field:focus{
+outline:none;
+border-color:#556b2f;
+box-shadow:0 0 0 3px rgba(85,107,47,.15);
 }
 
 .radio-group{
@@ -225,16 +233,17 @@ margin-bottom:12px;
 }
 
 .btn{
-display:inline-block;
-margin-top:12px;
+display:block;
+width:60%;
+margin:18px auto 0;
 background:#556b2f;
 color:#fff;
-text-decoration:none;
-padding:12px 22px;
+padding:12px;
+border:none;
 border-radius:30px;
 font-family:'Poppins',sans-serif;
+font-size:16px;
 font-weight:500;
-border:none;
 cursor:pointer;
 transition:.3s;
 }
