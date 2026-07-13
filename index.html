@@ -212,7 +212,6 @@ type="number"
 name="guests"
 placeholder="Number of Guests"
 min="1"
-value="1"
 required
 class="field">
 
@@ -230,8 +229,6 @@ checked>
 Yes, I'll be there
 </label>
 
-<br><br>
-
 <label>
 <input type="radio"
 name="response"
@@ -247,7 +244,7 @@ Submit RSVP
 
 </form>
 
-<p id="status" style="margin-top:15px;color:#556b2f;"></p>
+
 
 </div>
 <div class="footer">
@@ -297,8 +294,7 @@ window.onload = function () {
 
         if (!submitted) return;
 
-        document.getElementById("status").innerHTML =
-            "❤️ Thank you for your RSVP!";
+    alert("❤️ Thank you for your RSVP!\n\nWe look forward to celebrating with you.");
 
         document.getElementById("rsvpForm").reset();
 
