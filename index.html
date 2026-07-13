@@ -259,18 +259,17 @@ document.getElementById("rsvpForm").addEventListener("submit", async function(e)
 
     e.preventDefault();
 
-    const form = this;
-    const data = new FormData(form);
+    const formData = new URLSearchParams(new FormData(this));
 
     try{
 
         await fetch(SCRIPT_URL,{
             method:"POST",
-            body:data,
-            mode:"no-cors"
+            headers:{
+                "Content-Type":"application/x-www-form-urlencoded"
+            },
+            body:formData.toString()
         });
-
-        form.reset();
 
         Swal.fire({
             icon:"success",
@@ -278,6 +277,8 @@ document.getElementById("rsvpForm").addEventListener("submit", async function(e)
             text:"Your RSVP has been received.",
             confirmButtonColor:"#556b2f"
         });
+
+        this.reset();
 
     }catch(err){
 
