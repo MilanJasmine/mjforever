@@ -58,6 +58,33 @@ text-shadow:0 2px 10px rgba(0,0,0,.4);
 }
 @keyframes bgZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
+  .field{
+width:100%;
+padding:12px;
+margin:12px 0;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+font-family:Poppins,sans-serif;
+background:#fff;
+}
+
+.radio-group{
+text-align:left;
+margin:20px 0;
+}
+
+.radio-group label{
+font-size:16px;
+cursor:pointer;
+display:block;
+margin-top:8px;
+}
+
+.question{
+font-weight:600;
+margin-bottom:12px;
+}
 
 .hero{
 min-height:100vh;
@@ -165,34 +192,64 @@ text-shadow:0 0 8px rgba(255,255,255,.7);
 <a class="btn" target="_blank" href="https://share.google/12JXYSIhS6beJ2d1A">Reception Location</a>
 </div>
 <div class="box">
-  <h3>RSVP</h3>
+<h3>RSVP</h3>
 
-  <form
-    action="https://script.google.com/macros/s/AKfycbxkVVbsg6IteWrX3iLdiSOQR18tT9b_LkPx1afI1DV74sp4_4Jq6f43xOHmYaGepPUS/exec"
-    method="POST"
-    target="hidden_iframe"
-    id="rsvpForm">
+<form
+action="https://script.google.com/macros/s/AKfycbxkVVbsg6IteWrX3iLdiSOQR18tT9b_LkPx1afI1DV74sp4_4Jq6f43xOHmYaGepPUS/exec"
+method="POST"
+target="hidden_iframe"
+id="rsvpForm">
 
-    <input
-      type="text"
-      name="name"
-      placeholder="Enter your name"
-      required
-      style="
-      width:100%;
-      padding:12px;
-      margin:15px 0;
-      border:1px solid #ccc;
-      border-radius:10px;
-      font-size:16px;">
+<input
+type="text"
+name="name"
+placeholder="Kindly enter your full name"
+required
+class="field">
 
-    <button class="btn" type="submit">
-      I'm Attending
-    </button>
-  </form>
+<input
+type="number"
+name="guests"
+placeholder="Number of Guests"
+min="1"
+value="1"
+required
+class="field">
 
+<div class="radio-group">
 
-  <p id="status" style="margin-top:15px;color:#556b2f;"></p>
+<p class="question">
+Can you attend?
+</p>
+
+<label>
+<input type="radio"
+name="response"
+value="Yes"
+checked>
+Yes, I'll be there
+</label>
+
+<br><br>
+
+<label>
+<input type="radio"
+name="response"
+value="No">
+Sorry, can't make it
+</label>
+
+</div>
+
+<button class="btn" type="submit">
+Submit RSVP
+</button>
+
+</form>
+
+<p id="status" style="margin-top:15px;color:#556b2f;"></p>
+
+</div>
 </div>
 <div class="footer">
 <p>We look forward to celebrating with you ❤</p>
