@@ -147,6 +147,7 @@ text-shadow:0 0 8px rgba(255,255,255,.7);
 .day{font-size:56px}
 }
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -197,7 +198,6 @@ text-shadow:0 0 8px rgba(255,255,255,.7);
 <form
 action="https://script.google.com/macros/s/AKfycbxc8epS9KzoVqXDQYmMpXZJU0tYDf_FXH-X1RTTZknaiA7iy1cy2Cty5igQh0rwfAPw/exec"
 method="POST"
-target="hidden_iframe"
 id="rsvpForm">
 
 <input
@@ -256,6 +256,18 @@ Submit RSVP
 </section>
 
 <script>
+  document.getElementById("rsvpForm").addEventListener("submit", function () {
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Thank You!',
+        text: 'Your RSVP has been received.',
+        confirmButtonColor: '#556b2f'
+    });
+
+    this.reset();
+
+});
 const target=new Date("2026-09-12T11:30:00");
 setInterval(()=>{
 const d=Math.max(0,target-new Date());
@@ -282,33 +294,8 @@ setTimeout(()=>{
 },1200);
 
 
-let submitted = false;
-
-window.onload = function () {
-
-    document.getElementById("rsvpForm").addEventListener("submit", function () {
-        submitted = true;
-    });
-
-    document.getElementById("hidden_iframe").onload = function () {
-
-        if (!submitted) return;
-
-    alert("❤️ Thank you for your RSVP!\n\nWe look forward to celebrating with you.");
-
-        document.getElementById("rsvpForm").reset();
-
-        submitted = false;
-    };
-
-};
-
 </script>
-  <iframe
-name="hidden_iframe"
-style="display:none"
-id="hidden_iframe">
-</iframe>
+ 
 
 </body>
 </html>
