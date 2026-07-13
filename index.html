@@ -259,8 +259,7 @@ document.getElementById("rsvpForm").addEventListener("submit", async function(e)
 
     e.preventDefault();
 
-    document.getElementById("loading").style.visibility="visible";
-    document.getElementById("loading").style.opacity="1";
+    document.getElementById("loading").style.display = "flex";
 
     const formData = new URLSearchParams(new FormData(this));
 
@@ -278,8 +277,7 @@ document.getElementById("rsvpForm").addEventListener("submit", async function(e)
 
     }catch(err){
 
-        document.getElementById("loading").style.visibility="hidden";
-        document.getElementById("loading").style.opacity="0";
+       document.getElementById("loading").style.display = "none";
 
         alert("Unable to submit RSVP.");
 
@@ -319,14 +317,10 @@ position:fixed;
 inset:0;
 background:rgba(255,255,255,.95);
 z-index:9999;
-display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
 font-family:Poppins,sans-serif;
-visibility:hidden;
-opacity:0;
-transition:.3s;
 ">
 
 <div style="
