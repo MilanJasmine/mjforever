@@ -468,11 +468,11 @@ const nameField = document.getElementById("name");
 const guestsField = document.getElementById("guests");
 
 function toggleAttendingFields() {
+    nameField.required = true;
 
     if (yesRadio.checked) {
 
         attendingFields.style.display = "block";
-        nameField.required = true;
         guestsField.required = true;
 
     } else {
